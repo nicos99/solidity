@@ -830,9 +830,9 @@ the ``dup`` and ``swap`` instructions as well as ``jump`` instructions, labels a
 |                         |     |   | as a 20 byte value and ``s`` is a big-endian 256-bit value      |
 +-------------------------+-----+---+-----------------------------------------------------------------+
 | call(g, a, v, in,       |     | F | call contract at address a with input mem[in...(in+insize))     |
-| insize, out, outsize)   |     |   | providing g gas, v wei and output area mem[out...(out+outsize)) |
-|                         |     |   | returning 0 on error (eg. out of gas) and 1 on success.         |
-|                         |     |   | Does not touch return area past output area size.               |
+| insize, out, outsize)   |     |   | providing g gas and v wei and output area                       |
+|                         |     |   | mem[out...(out+outsize)) returning 0 on error (eg. out of gas)  |
+|                         |     |   | and 1 on success                                                |
 +-------------------------+-----+---+-----------------------------------------------------------------+
 | callcode(g, a, v, in,   |     | F | identical to ``call`` but only use the code from a and stay     |
 | insize, out, outsize)   |     |   | in the context of the current contract otherwise                |
