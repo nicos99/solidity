@@ -881,6 +881,12 @@ the ``dup`` and ``swap`` instructions as well as ``jump`` instructions, labels a
 | gaslimit()              |     | F | block gas limit of the current block                            |
 +-------------------------+-----+---+-----------------------------------------------------------------+
 
+The ``call*`` functions require defining an output area in memory equal to the
+``out`` plus ``outsize`` function parameters. This is not the same as the data
+returned by calling the contract, but rather the space in memory reserved for the data returned.
+The functions never touch any memory outside of this area, and return a ``0``
+("out of gas") if the area reserved is not large enough for the return data.
+
 There are three additional functions, ``datasize(x)``, ``dataoffset(x)`` and ``datacopy(t, f, l)``,
 which are used to access other parts of a Yul object.
 
