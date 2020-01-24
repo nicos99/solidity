@@ -61,6 +61,14 @@ SemanticTest::SemanticTest(string const& _filename, langutil::EVMVersion _evmVer
 		}
 		m_settings.erase("compileViaYul");
 	}
+
+	if (m_settings.count("revertStrings"))
+	{
+		auto revertStrings = revertStringsFromString(m_settings["revertStrings"]);
+		if (revertStrings)
+			m_compiler.setRevertStringBehaviour(*revertStrings);
+	}
+
 	parseExpectations(file);
 	soltestAssert(!m_tests.empty(), "No tests specified in " + _filename);
 }
